@@ -8,8 +8,8 @@ export default function Page() {
         <Image
           src="/login.jpeg"
           alt="login"
-          width={200}
-          height={200}
+          width={500}
+          height={500}
           className="w-full object-contain"
         />
       </div>
