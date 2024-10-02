@@ -3,7 +3,7 @@ export default defineConfig({
   schema: "./configs/schema.js",
   dialect: "postgresql",
   dbCredentials: {
-    url: process.env.NEXT_PUBLIC_DRIZZLE_DATABASE_URL, //if the env variable does not work, need to add the actual url
+    url: "postgresql://AI-Video-Generator-DB_owner:k8lsGHwTVOC9@ep-falling-frost-a5dk0u9d.us-east-2.aws.neon.tech/AI-Video-Generator-DB?sslmode=require",
   },
   verbose: true,
   strict: true,
