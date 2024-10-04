@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import SelectTopic from "./_components/SelectTopic";
 import SelectStyle from "./_components/SelectStyle";
 import SelectDuration from "./_components/SelectDuration";
+import { Button } from "@/components/ui/button";
 
 function CreateNew() {
   const [formData, setFormData] = useState([]);
@@ -32,7 +33,7 @@ function CreateNew() {
 
         <SelectDuration onUserSelect={handleInputChange} />
 
-        {/* create button */}
+        <Button className="mt-10 w-full">Generate Video</Button>
       </div>
     </div>
   );
