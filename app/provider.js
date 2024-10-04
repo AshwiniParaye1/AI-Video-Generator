@@ -19,8 +19,6 @@ function Provider({ children }) {
       .from(Users)
       .where(eq(Users.email, user?.primaryEmailAddress?.emailAddress));
 
-    console.log("result===", result);
-
     if (!result[0]) {
       await db.insert(Users).values({
         name: user.fullName,
