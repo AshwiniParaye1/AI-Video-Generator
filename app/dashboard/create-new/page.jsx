@@ -20,7 +20,8 @@ function CreateNew() {
       <div className="mt-10 shadow-md p-10">
         <SelectTopic onUserSelect={handleInputChange} />
 
-        <SelectStyle />
+        <SelectStyle onUserSelect={handleInputChange} />
+
         {/* duration */}
         {/* create button */}
       </div>
