@@ -3,12 +3,20 @@
 import React, { useState } from "react";
 import SelectTopic from "./_components/SelectTopic";
 import SelectStyle from "./_components/SelectStyle";
+import SelectDuration from "./_components/SelectDuration";
 
 function CreateNew() {
   const [formData, setFormData] = useState([]);
 
   const handleInputChange = (fieldName, fieldValue) => {
     console.log(" Value==", fieldValue);
+
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [fieldName]: fieldValue
+      };
+    });
   };
 
   return (
@@ -22,7 +30,8 @@ function CreateNew() {
 
         <SelectStyle onUserSelect={handleInputChange} />
 
-        {/* duration */}
+        <SelectDuration onUserSelect={handleInputChange} />
+
         {/* create button */}
       </div>
     </div>
