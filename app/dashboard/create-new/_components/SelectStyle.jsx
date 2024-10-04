@@ -31,7 +31,7 @@ function SelectStyle() {
       <p className="text-gray-500">Select your video style</p>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-5 mt-3 ">
         {styleOptions.map((item, index) => (
-          <div className="relative">
+          <div className="relative hover:scale-110 transition-all cursor-pointer">
             <Image
               key={index}
               src={item.image}
