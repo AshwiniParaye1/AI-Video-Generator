@@ -10,6 +10,7 @@ import CustomLoading from "./_components/CustomLoading";
 
 function CreateNew() {
   const [formData, setFormData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (fieldName, fieldValue) => {
     console.log(" Value==", fieldValue);
@@ -27,6 +28,8 @@ function CreateNew() {
   };
   //get video script
   const GetVideoScript = async () => {
+    setLoading(true);
+
     const prompt =
       "Write a script to generate " +
       formData.duration +
@@ -36,8 +39,6 @@ function CreateNew() {
       formData.imageStyle +
       " format for each scene and give me result in JSON format with imagePrompt and ContentText as field, No Plain text";
 
-    console.log("prompt===", prompt);
-
     const result = await axios
       .post("/api/get-video-script", {
         prompt: prompt
@@ -45,6 +46,8 @@ function CreateNew() {
       .then((res) => {
         console.log("res===", res.data);
       });
+
+    setLoading(false);
   };
 
   return (
@@ -64,7 +67,7 @@ function CreateNew() {
           Generate Video
         </Button>
       </div>
-      <CustomLoading loading={true} />
+      <CustomLoading loading={loading} />
     </div>
   );
 }
