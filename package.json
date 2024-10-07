@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.1",
+    "@google-cloud/text-to-speech": "^5.4.0",
     "@google/generative-ai": "^0.21.0",
     "@neondatabase/serverless": "^0.9.5",
     "@radix-ui/react-alert-dialog": "^1.1.2",

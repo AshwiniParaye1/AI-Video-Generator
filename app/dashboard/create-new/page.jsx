@@ -45,12 +45,20 @@ function CreateNew() {
         prompt: prompt
       })
       .then((res) => {
-        console.log("res===", res.data.result);
-
         setVideoScript(res.data.result);
+
+        GenerateAudioFile(res.data.result);
       });
 
     setLoading(false);
+  };
+
+  const GenerateAudioFile = async (videoScriptData) => {
+    let script = "";
+
+    videoScriptData.forEach((item) => {
+      script += item.contentText + " ";
+    });
   };
 
   return (
