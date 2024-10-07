@@ -11,6 +11,7 @@ import CustomLoading from "./_components/CustomLoading";
 function CreateNew() {
   const [formData, setFormData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [videoScript, setVideoScript] = useState();
 
   const handleInputChange = (fieldName, fieldValue) => {
     console.log(" Value==", fieldValue);
@@ -44,7 +45,9 @@ function CreateNew() {
         prompt: prompt
       })
       .then((res) => {
-        console.log("res===", res.data);
+        console.log("res===", res.data.result);
+
+        setVideoScript(res.data.result);
       });
 
     setLoading(false);
