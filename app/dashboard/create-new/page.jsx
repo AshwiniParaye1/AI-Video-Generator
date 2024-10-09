@@ -116,10 +116,6 @@ function CreateNew() {
 
         GenerateImage();
       });
-
-    console.log("captions===", captions);
-    console.log("audiofileUrl====", audioFileUrl);
-    console.log("videoScript===", videoScript);
   };
 
   const GenerateImage = async () => {

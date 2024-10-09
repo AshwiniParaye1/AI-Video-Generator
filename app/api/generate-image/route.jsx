@@ -1,5 +1,8 @@
+import axios from "axios";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { NextResponse } from "next/server";
 import Replicate from "replicate";
+import { storage } from "../../../configs/FirebaseConfig";
 
 export async function POST(req) {
   try {
@@ -26,11 +29,36 @@ export async function POST(req) {
         }
       }
     );
-    console.log("output===", output);
+    //save to firebase
+    const base64Image =
+      "data:image/png;base64," + (await ConvertUrlToImage(output[0]));
 
-    return NextResponse.json({ result: output[0] });
+    const fileName = "ai-short-video-files/" + Date.now() + ".png";
+
+    const storageRef = ref(storage, fileName);
+
+    await uploadString(storageRef, base64Image, "data_url");
+
+    const downloadUrl = await getDownloadURL(storageRef);
+
+    console.log("downloadUrl===", downloadUrl);
+
+    return NextResponse.json({ result: downloadUrl });
   } catch (error) {
     console.log(error);
     return NextResponse.json({ "Error ": error });
   }
 }
+
+const ConvertUrlToImage = async (imageUrl) => {
+  try {
+    const res = await axios.get(imageUrl, { responseType: "arraybuffer" });
+
+    const base64Image = Buffer.from(res.data).toString("base64");
+
+    return base64Image;
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ "Error ": error });
+  }
+};
