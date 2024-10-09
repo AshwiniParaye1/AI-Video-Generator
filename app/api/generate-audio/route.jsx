@@ -5,7 +5,7 @@ const fs = require("fs");
 const util = require("util");
 
 const client = new textToSpeech.TextToSpeechClient({
-  apiKey: process.env.GOOGLE_API_KEY
+  apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY
 });
 
 export async function POST(req) {
