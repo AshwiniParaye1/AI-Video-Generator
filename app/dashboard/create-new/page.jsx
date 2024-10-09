@@ -17,6 +17,7 @@ function CreateNew() {
   const [formData, setFormData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [videoScript, setVideoScript] = useState();
+  const [audioFileUrl, setAudioFileUrl] = useState();
 
   const handleInputChange = (fieldName, fieldValue) => {
     console.log(" Value==", fieldValue);
@@ -77,7 +78,8 @@ function CreateNew() {
         id: id
       })
       .then((res) => {
-        console.log("res===", res.data);
+        console.log("res===", res.data.res);
+        setAudioFileUrl(res.data.result);
       });
 
     setLoading(false);
