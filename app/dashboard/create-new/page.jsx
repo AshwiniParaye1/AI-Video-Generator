@@ -119,10 +119,11 @@ function CreateNew() {
   };
 
   const GenerateImage = async () => {
+    let images = [];
+
     // videoScript.forEach(async (element) => {
     VideoScriptData.forEach(async (element) => {
-      let images = [];
-
+      setLoading(true);
       await axios
         .post("/api/generate-image", {
           prompt: element?.imagePrompt
