@@ -20,8 +20,6 @@ function CreateNew() {
   const { videoData, setVideoData } = useContext(VideoDataContext);
 
   const handleInputChange = (fieldName, fieldValue) => {
-    console.log(" Value==", fieldValue);
-
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
@@ -32,11 +30,6 @@ function CreateNew() {
 
   const onCreateClickHandler = () => {
     GetVideoScript();
-    // GenerateAudioFile(scriptData);
-
-    // GenerateAudioCaption(FileUrl);
-
-    // GenerateImage();
   };
   //get video script
   const GetVideoScript = async () => {
@@ -84,8 +77,6 @@ function CreateNew() {
       .then(async (res) => {
         setVideoData((prev) => ({ ...prev, audioFileUrl: res?.data?.result }));
 
-        console.log("audioFileUrl===", res?.data?.result);
-
         setAudioFileUrl(res?.data?.result);
         res.data.result &&
           (await GenerateAudioCaption(res.data.result, videoScriptData));
@@ -101,8 +92,6 @@ function CreateNew() {
         audioFileUrl: fileUrl
       })
       .then(async (res) => {
-        console.log("captions===", res.data.result);
-
         setVideoData((prev) => ({ ...prev, captions: res.data.result }));
 
         setCaptions(res?.data?.result);
@@ -129,15 +118,11 @@ function CreateNew() {
     }
     setVideoData((prev) => ({ ...prev, imageList: images }));
 
-    console.log("imageList===", images);
-
     setImageList(images);
     setLoading(false);
   };
 
-  useEffect(() => {
-    console.log(videoData);
-  }, [videoData]);
+  useEffect(() => {}, [videoData]);
 
   return (
     <div className="md:px-20">

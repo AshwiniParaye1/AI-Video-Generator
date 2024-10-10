@@ -41,8 +41,6 @@ export async function POST(req) {
 
     const downloadUrl = await getDownloadURL(storageRef);
 
-    console.log("downloadUrl===", downloadUrl);
-
     return NextResponse.json({ result: downloadUrl });
   } catch (error) {
     console.log(error);
