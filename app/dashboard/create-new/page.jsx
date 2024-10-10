@@ -16,7 +16,7 @@ function CreateNew() {
   const [videoScript, setVideoScript] = useState();
   const [audioFileUrl, setAudioFileUrl] = useState();
   const [captions, setCaptions] = useState();
-  const [imageList, setImageList] = useState([]);
+  const [imageList, setImageList] = useState();
   const { videoData, setVideoData } = useContext(VideoDataContext);
 
   const handleInputChange = (fieldName, fieldValue) => {
@@ -82,13 +82,13 @@ function CreateNew() {
         id: id
       })
       .then(async (res) => {
-        setVideoData((prev) => ({ ...prev, audioFileUrl: res.data.result }));
+        setVideoData((prev) => ({ ...prev, audioFileUrl: res?.data?.result }));
 
-        setAudioFileUrl(res.data.result);
+        console.log("audioFileUrl===", res?.data?.result);
+
+        setAudioFileUrl(res?.data?.result);
         res.data.result &&
           (await GenerateAudioCaption(res.data.result, videoScriptData));
-
-        setLoading(false);
       });
   };
 
@@ -100,12 +100,14 @@ function CreateNew() {
       .post("/api/generate-caption", {
         audioFileUrl: fileUrl
       })
-      .then((res) => {
-        setCaptions(res?.data?.result);
+      .then(async (res) => {
+        console.log("captions===", res.data.result);
 
         setVideoData((prev) => ({ ...prev, captions: res.data.result }));
 
-        res.data.result && GenerateImage(videoScriptData);
+        setCaptions(res?.data?.result);
+
+        res.data.result && (await GenerateImage(videoScriptData));
       });
   };
 
@@ -126,6 +128,8 @@ function CreateNew() {
       }
     }
     setVideoData((prev) => ({ ...prev, imageList: images }));
+
+    console.log("imageList===", images);
 
     setImageList(images);
     setLoading(false);
