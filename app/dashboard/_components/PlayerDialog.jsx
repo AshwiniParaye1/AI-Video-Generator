@@ -48,10 +48,13 @@ function PlayerDialog({ playVideo, videoId }) {
               compositionWidth={300}
               compositionHeight={450}
               fps={30}
+              importProps={{
+                ...videoData
+              }}
             />
-            <div className="flex justify-between">
+            <div className="flex justify-between mt-2 cursor-pointer">
               <Button variant="ghost">Cancel</Button>
-              <Button variant="ghost">Export</Button>
+              <Button variant="outline">Export</Button>
             </div>
           </DialogDescription>
         </DialogHeader>
