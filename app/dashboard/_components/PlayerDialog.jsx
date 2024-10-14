@@ -4,8 +4,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
-  DialogTrigger
+  DialogTitle
 } from "@/components/ui/dialog";
 import { Player } from "@remotion/player";
 import RemotionVideo from "./RemotionVideo";
@@ -43,19 +42,23 @@ function PlayerDialog({ playVideo, videoId }) {
             Your video is ready!
           </DialogTitle>
           <DialogDescription>
-            <Player
-              component={RemotionVideo}
-              durationInFrames={Number(durationInFrames.toFixed(0))}
-              compositionWidth={300}
-              compositionHeight={450}
-              fps={30}
-              controls={true}
-              importProps={{
-                ...videoData,
-                setDurationInFrames: (frameValue) =>
-                  setDurationInFrames(frameValue)
-              }}
-            />
+            {videoData && (
+              <Player
+                component={RemotionVideo}
+                durationInFrames={Number(durationInFrames.toFixed(0))}
+                compositionWidth={300}
+                compositionHeight={450}
+                fps={30}
+                controls={true}
+                inputProps={{
+                  script: videoData.script,
+                  audioFileUrl: videoData.audioFileUrl,
+                  captions: videoData.captions,
+                  imageList: videoData.imageList,
+                  setDurationInFrames: setDurationInFrames
+                }}
+              />
+            )}
             <div className="flex justify-between mt-2 cursor-pointer">
               <Button variant="ghost">Cancel</Button>
               <Button variant="outline">Export</Button>

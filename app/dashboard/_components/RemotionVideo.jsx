@@ -18,11 +18,7 @@ function RemotionVideo({
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
 
-  console.log("captions", captions);
-
   const getDurationFrames = () => {
-    console.log("inside getDurationFrames", captions);
-
     setDurationInFrames((captions[captions?.length - 1]?.end / 1000) * fps);
 
     return (captions[captions?.length - 1]?.end / 1000) * fps;
