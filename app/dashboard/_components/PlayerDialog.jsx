@@ -12,6 +12,7 @@ import RemotionVideo from "./RemotionVideo";
 import { Button } from "@/components/ui/button";
 import { VideoData } from "@/configs/schema";
 import { eq } from "drizzle-orm";
+import { db } from "@/configs/db";
 
 function PlayerDialog({ playVideo, videoId }) {
   const [openDialog, setOpenDialog] = useState(false);
