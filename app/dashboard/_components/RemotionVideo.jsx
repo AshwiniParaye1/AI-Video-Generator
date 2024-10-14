@@ -31,9 +31,9 @@ function RemotionVideo({
   const getCurrentCaptions = () => {
     const currentTime = (frame / 30) * 1000; // convert frame to seconds
     const currentCaption = captions.find((word) => {
-      return word.start <= currentTime && word.end >= currentTime;
-      return currentCaption ? currentCaption?.text : "";
+      word.start <= currentTime && word.end >= currentTime;
     });
+    return currentCaption ? currentCaption?.text : "";
   };
 
   return (
