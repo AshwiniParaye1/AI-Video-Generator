@@ -5,6 +5,8 @@ function RemotionVideo({ script, audioFileUrl, captions, imageList }) {
   const { fps } = useVideoConfig();
 
   console.log("fps", fps);
+  console.log("captions", captions);
+
   const getDurationFrames = () => {
     console.log("captions", captions);
     console.log("captions", fps);

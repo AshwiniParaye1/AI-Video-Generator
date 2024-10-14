@@ -21,7 +21,7 @@ function PlayerDialog({ playVideo, videoId }) {
   useEffect(() => {
     setOpenDialog(playVideo);
     videoId && GetVideoData();
-  }, [playVideo, videoId]);
+  }, [playVideo]);
 
   const GetVideoData = async () => {
     const result = await db
