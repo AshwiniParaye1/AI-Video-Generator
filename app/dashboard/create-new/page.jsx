@@ -13,6 +13,7 @@ import { VideoData } from "@/configs/schema";
 import { useUser } from "@clerk/nextjs";
 import { db } from "@/configs/db";
 import PlayerDialog from "../_components/PlayerDialog";
+import { useRouter } from "next/navigation";
 
 function CreateNew() {
   const [formData, setFormData] = useState([]);

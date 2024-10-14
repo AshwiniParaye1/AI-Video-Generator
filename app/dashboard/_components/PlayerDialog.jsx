@@ -12,14 +12,17 @@ import { Button } from "@/components/ui/button";
 import { VideoData } from "@/configs/schema";
 import { eq } from "drizzle-orm";
 import { db } from "@/configs/db";
+import { useRouter } from "next/navigation";
 
 function PlayerDialog({ playVideo, videoId }) {
   const [openDialog, setOpenDialog] = useState(false);
   const [videoData, setVideoData] = useState();
   const [durationInFrames, setDurationInFrames] = useState(100);
 
+  const router = useRouter();
+
   useEffect(() => {
-    setOpenDialog(playVideo);
+    setOpenDialog(!openDialog);
     videoId && GetVideoData();
   }, [playVideo]);
 
@@ -44,6 +47,7 @@ function PlayerDialog({ playVideo, videoId }) {
           <DialogDescription>
             {videoData && (
               <Player
+                key={videoId}
                 component={RemotionVideo}
                 durationInFrames={Number(durationInFrames.toFixed(0))}
                 compositionWidth={300}
@@ -60,7 +64,15 @@ function PlayerDialog({ playVideo, videoId }) {
               />
             )}
             <div className="flex justify-between mt-2 cursor-pointer">
-              <Button variant="ghost">Cancel</Button>
+              <Button
+                variant="ghost"
+                onClick={() => {
+                  router.replace("/dashboard");
+                  setOpenDialog(false);
+                }}
+              >
+                Cancel
+              </Button>
               <Button variant="outline">Export</Button>
             </div>
           </DialogDescription>

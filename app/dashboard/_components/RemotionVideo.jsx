@@ -52,42 +52,40 @@ function RemotionVideo({
             );
 
           return (
-            <>
-              <Sequence
-                key={index}
-                from={startTime}
-                durationInFrames={getDurationFrames()}
+            <Sequence
+              key={index}
+              from={startTime}
+              durationInFrames={getDurationFrames()}
+            >
+              <AbsoluteFill
+                style={{ justifyContent: "center", alignItems: "center" }}
               >
+                <Img
+                  src={image}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    transform: `scale(${scale(index)})`
+                  }}
+                />
                 <AbsoluteFill
-                  style={{ justifyContent: "center", alignItems: "center" }}
+                  style={{
+                    color: "white",
+                    top: undefined,
+                    height: 150,
+                    bottom: 50,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                    textAlign: "center",
+                    width: "100%"
+                  }}
                 >
-                  <Img
-                    src={image}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      transform: `scale(${scale(index)})`
-                    }}
-                  />
-                  <AbsoluteFill
-                    style={{
-                      color: "white",
-                      top: undefined,
-                      height: 150,
-                      bottom: 50,
-                      justifyContent: "center",
-                      alignItems: "center",
-                      textAlign: "center",
-                      textAlign: "center",
-                      width: "100%"
-                    }}
-                  >
-                    <h2 className="text-2xl">{getCurrentCaptions()}</h2>
-                  </AbsoluteFill>
+                  <h2 className="text-2xl">{getCurrentCaptions()}</h2>
                 </AbsoluteFill>
-              </Sequence>
-            </>
+              </AbsoluteFill>
+            </Sequence>
           );
         })}
 
