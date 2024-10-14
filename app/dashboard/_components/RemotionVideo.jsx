@@ -8,7 +8,6 @@ function RemotionVideo({ script, audioFileUrl, captions, imageList }) {
 
   const getDurationFrames = () => {
     console.log("captions", captions);
-    console.log("captions", fps);
 
     return (captions[captions?.length - 1]?.end / 1000) * fps;
   };
