@@ -63,19 +63,20 @@ function PlayerDialog({ playVideo, videoId }) {
                 }}
               />
             )}
-            <div className="flex justify-between mt-2 cursor-pointer">
-              <Button
-                variant="ghost"
-                onClick={() => {
-                  router.replace("/dashboard");
-                  setOpenDialog(false);
-                }}
-              >
-                Cancel
-              </Button>
-              <Button variant="outline">Export</Button>
-            </div>
           </DialogDescription>
+          {/* Div moved outside of DialogDescription to avoid HTML hierarchy issue */}
+          <div className="flex justify-between mt-2 cursor-pointer">
+            <Button
+              variant="ghost"
+              onClick={() => {
+                router.replace("/dashboard");
+                setOpenDialog(false);
+              }}
+            >
+              Cancel
+            </Button>
+            <Button variant="outline">Export</Button>
+          </div>
         </DialogHeader>
       </DialogContent>
     </Dialog>
