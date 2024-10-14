@@ -11,7 +11,7 @@ function Header() {
         <h2 className="font-bold text-xl">Clip AI</h2>
       </div>
       <div className="flex gap-3 items-center">
-        <Button>dashboard</Button>
+        <Button>Dashboard</Button>
         <UserButton className="bg-red-500" />
       </div>
     </div>
