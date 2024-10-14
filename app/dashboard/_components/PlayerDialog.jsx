@@ -64,7 +64,6 @@ function PlayerDialog({ playVideo, videoId }) {
               />
             )}
           </DialogDescription>
-          {/* Div moved outside of DialogDescription to avoid HTML hierarchy issue */}
           <div className="flex justify-between mt-2 cursor-pointer">
             <Button
               variant="ghost"
