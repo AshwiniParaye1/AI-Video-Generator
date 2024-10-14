@@ -4,7 +4,6 @@ import { AbsoluteFill, Img, Sequence, useVideoConfig } from "remotion";
 function RemotionVideo({ script, audioFileUrl, captions, imageList }) {
   const { fps } = useVideoConfig();
 
-  console.log("fps", fps);
   console.log("captions", captions);
 
   const getDurationFrames = () => {
