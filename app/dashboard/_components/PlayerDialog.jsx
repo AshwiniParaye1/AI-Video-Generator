@@ -17,6 +17,7 @@ import { db } from "@/configs/db";
 function PlayerDialog({ playVideo, videoId }) {
   const [openDialog, setOpenDialog] = useState(false);
   const [videoData, setVideoData] = useState();
+  const [durationInFrames, setDurationInFrames] = useState(100);
 
   useEffect(() => {
     setOpenDialog(playVideo);
@@ -38,18 +39,21 @@ function PlayerDialog({ playVideo, videoId }) {
     <Dialog open={openDialog}>
       <DialogContent className="flex flex-col items-center">
         <DialogHeader>
-          <DialogTitle className="text-3xl font-bold my-5">
+          <DialogTitle className="text-3xl my-5">
             Your video is ready!
           </DialogTitle>
           <DialogDescription>
             <Player
               component={RemotionVideo}
-              durationInFrames={120}
+              durationInFrames={Number(durationInFrames.toFixed(0))}
               compositionWidth={300}
               compositionHeight={450}
               fps={30}
+              controls={true}
               importProps={{
-                ...videoData
+                ...videoData,
+                setDurationInFrames: (frameValue) =>
+                  setDurationInFrames(frameValue)
               }}
             />
             <div className="flex justify-between mt-2 cursor-pointer">
