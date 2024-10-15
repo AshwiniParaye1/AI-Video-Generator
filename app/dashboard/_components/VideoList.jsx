@@ -7,6 +7,11 @@ function VideoList({ videoList }) {
   const [openPlayerDialog, setOpenPlayerDialog] = useState(false);
   const [videoId, setVideoId] = useState();
 
+  const handleDialogClose = () => {
+    setOpenPlayerDialog(false);
+    setVideoId(null);
+  };
+
   return (
     <div className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
       {videoList.map((video) => (
@@ -34,7 +39,11 @@ function VideoList({ videoList }) {
         </div>
       ))}
 
-      <PlayerDialog playVideo={openPlayerDialog} videoId={videoId} />
+      <PlayerDialog
+        playVideo={openPlayerDialog}
+        videoId={videoId}
+        onClose={handleDialogClose} // Pass the onClose handler to the dialog
+      />
     </div>
   );
 }
