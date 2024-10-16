@@ -15,17 +15,15 @@ import { db } from "@/configs/db";
 import { useRouter } from "next/navigation";
 
 function PlayerDialog({ playVideo, videoId }) {
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openDialog, setOpenDialog] = useState(true);
   const [videoData, setVideoData] = useState();
   const [durationInFrames, setDurationInFrames] = useState(100);
 
   const router = useRouter();
 
   useEffect(() => {
-    if (playVideo) {
-      setOpenDialog(true);
-      videoId && GetVideoData();
-    }
+    setOpenDialog(!openDialog);
+    videoId && GetVideoData();
   }, [playVideo]);
 
   const GetVideoData = async () => {
