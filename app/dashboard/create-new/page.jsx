@@ -170,14 +170,14 @@ function CreateNew() {
   };
 
   const UpdateUserCredits = async () => {
-    const result = await db
+    await db
       .update(Users)
       .set({ credits: userDetails?.credits - 10 })
       .where(eq(Users.email, user?.primaryEmailAddress?.emailAddress));
 
-    console.log(result);
-
     setUserDetails((prev) => ({ ...prev, credits: userDetails?.credits - 10 }));
+
+    setVideoData(null);
   };
 
   return (
