@@ -43,7 +43,7 @@ function CreateNew() {
   };
 
   const onCreateClickHandler = () => {
-    if (userDetails?.credits <= 0) {
+    if (userDetails?.credits === 0) {
       toast("Oops! You don't have enough credits to create a new video🙁");
 
       return;
