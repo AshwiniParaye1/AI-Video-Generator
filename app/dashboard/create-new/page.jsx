@@ -9,11 +9,15 @@ import axios from "axios";
 import CustomLoading from "./_components/CustomLoading";
 import { v4 as uuidv4 } from "uuid";
 import { VideoDataContext } from "@/app/_context/VideoDataContext";
+import { UserDetailsContext } from "@/app/_context/UserDetailsContext";
 import { VideoData } from "@/configs/schema";
 import { useUser } from "@clerk/nextjs";
 import { db } from "@/configs/db";
 import PlayerDialog from "../_components/PlayerDialog";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { Users } from "@/configs/schema";
+import { eq } from "drizzle-orm";
 
 function CreateNew() {
   const [formData, setFormData] = useState([]);
@@ -26,6 +30,7 @@ function CreateNew() {
   const [videoId, setVideoId] = useState(1);
 
   const { videoData, setVideoData } = useContext(VideoDataContext);
+  const { userDetails, setUserDetails } = useContext(UserDetailsContext);
   const { user } = useUser();
 
   const handleInputChange = (fieldName, fieldValue) => {
@@ -38,6 +43,11 @@ function CreateNew() {
   };
 
   const onCreateClickHandler = () => {
+    if (!userDetails?.credits >= 0) {
+      toast("Oops! You don't have enough credits to create a new video🙁");
+
+      return;
+    }
     GetVideoScript();
   };
   //get video script
@@ -151,11 +161,21 @@ function CreateNew() {
       })
       .returning({ id: VideoData.id });
 
+    await UpdateUserCredits();
     setVideoId(result[0].id);
     setPlayVideo(true);
     console.log(result);
 
     setLoading(false);
+  };
+
+  const UpdateUserCredits = async () => {
+    const result = await db
+      .update(Users)
+      .set({ credits: userDetails?.credits - 10 })
+      .where(eq(Users.email, user?.primaryEmailAddress?.emailAddress));
+
+    setUserDetails((prev) => ({ ...prev, credits: userDetails?.credits - 10 }));
   };
 
   return (
