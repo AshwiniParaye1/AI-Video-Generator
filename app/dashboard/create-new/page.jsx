@@ -43,7 +43,7 @@ function CreateNew() {
   };
 
   const onCreateClickHandler = () => {
-    if (!userDetails?.credits >= 0) {
+    if (userDetails?.credits <= 0) {
       toast("Oops! You don't have enough credits to create a new video🙁");
 
       return;
@@ -174,6 +174,8 @@ function CreateNew() {
       .update(Users)
       .set({ credits: userDetails?.credits - 10 })
       .where(eq(Users.email, user?.primaryEmailAddress?.emailAddress));
+
+    console.log(result);
 
     setUserDetails((prev) => ({ ...prev, credits: userDetails?.credits - 10 }));
   };
