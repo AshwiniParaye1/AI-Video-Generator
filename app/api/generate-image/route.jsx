@@ -19,8 +19,7 @@ export async function POST(req) {
         input: {
           width: 1024,
           height: 1280,
-          prompt:
-            "Imagine a world without wheels. That's what our ancestors lived with. Ancient civilizations built empires, invented writing, and shared knowledge. From knights and castles to the rise of powerful kingdoms, history is full of fascinating stories. The pursuit of knowledge and discovery has driven human progress for centuries. History connects us to our past and shapes our future. By studying history, we gain valuable insights into ourselves and the world around us.",
+          prompt: prompt.prompt,
           scheduler: "K_EULER",
           num_outputs: 1,
           guidance_scale: 0,
