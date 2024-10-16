@@ -14,7 +14,7 @@ import { eq } from "drizzle-orm";
 import { db } from "@/configs/db";
 import { useRouter } from "next/navigation";
 
-function PlayerDialog({ playVideo, videoId, onClose }) {
+function PlayerDialog({ playVideo, videoId }) {
   const [openDialog, setOpenDialog] = useState(false);
   const [videoData, setVideoData] = useState();
   const [durationInFrames, setDurationInFrames] = useState(100);
@@ -22,10 +22,8 @@ function PlayerDialog({ playVideo, videoId, onClose }) {
   const router = useRouter();
 
   useEffect(() => {
-    setOpenDialog(!!playVideo); // Only open dialog when playVideo is true
-    if (videoId) {
-      GetVideoData();
-    }
+    setOpenDialog(!openDialog);
+    videoId && GetVideoData();
   }, [playVideo]);
 
   const GetVideoData = async () => {
@@ -39,14 +37,8 @@ function PlayerDialog({ playVideo, videoId, onClose }) {
     setVideoData(result[0]);
   };
 
-  const handleClose = () => {
-    setOpenDialog(false);
-    onClose(); // Call onClose prop to handle the state in the parent component
-    router.replace("/dashboard");
-  };
-
   return (
-    <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+    <Dialog open={openDialog}>
       <DialogContent className="flex flex-col items-center">
         <DialogHeader>
           <DialogTitle className="text-3xl my-5">
@@ -73,7 +65,13 @@ function PlayerDialog({ playVideo, videoId, onClose }) {
             )}
           </DialogDescription>
           <div className="flex justify-between mt-2 cursor-pointer">
-            <Button variant="ghost" onClick={handleClose}>
+            <Button
+              variant="ghost"
+              onClick={() => {
+                router.replace("/dashboard");
+                setOpenDialog(false);
+              }}
+            >
               Cancel
             </Button>
             <Button variant="outline">Export</Button>

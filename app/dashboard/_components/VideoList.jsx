@@ -42,7 +42,7 @@ function VideoList({ videoList }) {
       <PlayerDialog
         playVideo={openPlayerDialog}
         videoId={videoId}
-        onClose={handleDialogClose} // Pass the onClose handler to the dialog
+        onClose={handleDialogClose}
       />
     </div>
   );
