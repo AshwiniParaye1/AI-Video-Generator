@@ -22,8 +22,10 @@ function PlayerDialog({ playVideo, videoId }) {
   const router = useRouter();
 
   useEffect(() => {
-    setOpenDialog(!openDialog);
-    videoId && GetVideoData();
+    if (playVideo) {
+      setOpenDialog(true);
+      videoId && GetVideoData();
+    }
   }, [playVideo]);
 
   const GetVideoData = async () => {
