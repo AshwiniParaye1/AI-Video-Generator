@@ -30,29 +30,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div>
-          <Link href="/dashboard/create-new">
-            <Button
-              size="xl"
-              className="mt-4 mb-8 px-4 py-2 mr-4 bg-primary text-white rounded-md hover:bg-primary/90 transition"
-            >
-              Get Started
-            </Button>
-          </Link>
-
-          {/* add demo video link */}
-          <Link href="#">
-            <Button
-              size="xl"
-              variant="outline"
-              className="mt-4 mb-8 px-4 py-2 rounded-md transition"
-            >
-              Watch Demo
-            </Button>
-          </Link>
-        </div>
-
-        <div className="bg-white shadow-md rounded-lg p-6 max-w-2xl w-full">
+        <div className="bg-white shadow-md rounded-lg p-6 max-w-2xl w-full mt-10">
           <h2 className="text-2xl font-semibold mb-4 text-center">
             How it Works?
           </h2>
@@ -77,6 +55,28 @@ export default function Home() {
               watch the magic happen!
             </li>
           </ul>
+        </div>
+
+        <div className="flex flex-row items-center mt-10">
+          <Link href="/dashboard/create-new">
+            <Button
+              size="xl"
+              className="mt-4 mb-8 px-4 py-2 mr-4 bg-primary text-white rounded-md hover:bg-primary/90 transition"
+            >
+              Get Started
+            </Button>
+          </Link>
+
+          {/* add demo video link */}
+          <Link href="#">
+            <Button
+              size="xl"
+              variant="outline"
+              className="mt-4 mb-8 px-4 py-2 rounded-md transition"
+            >
+              Watch Demo
+            </Button>
+          </Link>
         </div>
       </main>
 

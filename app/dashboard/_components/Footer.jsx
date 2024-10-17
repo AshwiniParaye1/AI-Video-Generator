@@ -10,9 +10,7 @@ function Footer() {
   return (
     <div className="py-4 px-6 flex justify-between items-center">
       {/* Copyright Section */}
-      <div className="text-gray-400">
-        © {new Date().getFullYear()} Clip AI. All rights reserved.
-      </div>
+      <div className="text-gray-400">© {new Date().getFullYear()} Clip AI</div>
 
       {/* Made by Section with Contact and Social Media Icons */}
       <div>
