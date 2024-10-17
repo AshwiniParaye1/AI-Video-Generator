@@ -41,13 +41,13 @@ export default function Home() {
           </Link>
 
           {/* add demo video link */}
-          <Link href="/dashboard/create-new">
+          <Link href="#">
             <Button
               size="xl"
               variant="outline"
               className="mt-4 mb-8 px-4 py-2 rounded-md  transition"
             >
-              Watch a Demo
+              Watch Demo
             </Button>
           </Link>
         </div>
