@@ -69,7 +69,7 @@ export default function Home() {
           </Link>
 
           {/* Add demo video link */}
-          <Link href="#">
+          <Link href="https://www.loom.com/share/b56ed8b004944b3e9d17ec37544be125?sid=6c7bd786-61f2-4fa8-9afa-94b6af42387e">
             <Button
               size="xl"
               variant="outline"
