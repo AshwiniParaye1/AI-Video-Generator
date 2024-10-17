@@ -18,7 +18,7 @@ function Footer() {
       <div className="text-center mb-2 md:mb-0">
         <p className="text-gray-500">
           Made with ❤️ by{" "}
-          <span className="font-bold hover:text-gray-500 transition">
+          <span className="font-bold hover:text-gray-700 transition">
             <Link href={"https://www.linkedin.com/in/ashwini-paraye/"}>
               Ashwini Paraye
             </Link>
@@ -30,19 +30,19 @@ function Footer() {
       <div className="flex gap-4 justify-center md:justify-end">
         <Link
           href="mailto:ashwiniparaye9309@gmail.com"
-          className="text-gray-500 hover:text-gray-500 transition"
+          className="text-gray-500 hover:text-gray-700 transition"
         >
           <EnvelopeOpenIcon className="w-5 h-5" />
         </Link>
         <Link
           href={"https://github.com/AshwiniParaye1"}
-          className="text-gray-500 hover:text-gray-500 transition"
+          className="text-gray-500 hover:text-gray-700 transition"
         >
           <GitHubLogoIcon className="w-5 h-5" />
         </Link>
         <Link
           href={"https://www.linkedin.com/in/ashwini-paraye/"}
-          className="text-gray-500 hover:text-gray-500 transition"
+          className="text-gray-500 hover:text-gray-700 transition"
         >
           <LinkedInLogoIcon className="w-5 h-5" />
         </Link>
