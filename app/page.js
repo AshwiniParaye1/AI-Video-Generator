@@ -6,7 +6,7 @@ import Footer from "./dashboard/_components/Footer";
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <div className="p-3 px-5 flex items-center justify-between shadow-md">
         <Link href={"/"}>
           <div className="flex gap-3 items-center">
@@ -19,7 +19,7 @@ export default function Home() {
         </div>
       </div>
 
-      <main className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
+      <main className="flex flex-col items-center flex-grow bg-gray-100 p-4">
         <div className="flex flex-row items-center text-5xl font-bold mt-16 mb-4">
           <span className="mr-1">Build Your Short Video with</span>
           <span className="text-primary"> Clip AI</span>
@@ -45,7 +45,7 @@ export default function Home() {
             <Button
               size="xl"
               variant="outline"
-              className="mt-4 mb-8 px-4 py-2 rounded-md  transition"
+              className="mt-4 mb-8 px-4 py-2 rounded-md transition"
             >
               Watch Demo
             </Button>
@@ -79,6 +79,7 @@ export default function Home() {
           </ul>
         </div>
       </main>
+
       <Footer />
     </div>
   );
