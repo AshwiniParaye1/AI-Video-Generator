@@ -1,17 +1,23 @@
+import { Button } from "@/components/ui/button";
+import { UserButton } from "@clerk/nextjs";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <div>
-      <Head>
-        <title>AI Video Generator</title>
-        <meta
-          name="description"
-          content="Generate videos effortlessly using AI."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <div className="p-3 px-5 flex items-center justify-between shadow-md">
+        <Link href={"/"}>
+          <div className="flex gap-3 items-center">
+            <Image src={"/logo.png"} alt="logo" width={30} height={30} />
+            <h2 className="font-bold text-xl">Clip AI</h2>
+          </div>
+        </Link>
+        <div className="flex gap-3 items-center">
+          <UserButton />
+        </div>
+      </div>
 
       <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
         <h1 className="text-4xl font-bold text-center mb-4">
