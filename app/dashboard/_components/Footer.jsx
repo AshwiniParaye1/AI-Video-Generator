@@ -18,7 +18,7 @@ function Footer() {
       <div>
         <p className="text-gray-400">
           Made with ❤️ by{" "}
-          <span className="font-bold">
+          <span className="font-bold hover:text-gray-500 transition">
             <Link href={"https://www.linkedin.com/in/ashwini-paraye/"}>
               Ashwini Paraye
             </Link>
