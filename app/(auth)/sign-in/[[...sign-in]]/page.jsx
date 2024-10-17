@@ -32,8 +32,11 @@ export default function Page() {
       <div className="absolute inset-0 bg-black opacity-30" />
 
       {/* Centered sign-in form */}
-      <div className="flex justify-center items-center min-h-screen relative z-10">
-        <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center min-h-screen relative z-10 px-4">
+        <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+          <h1 className="text-2xl font-semibold text-center mb-4 text-gray-700">
+            Welcome Back
+          </h1>
           <SignIn />
         </div>
       </div>
