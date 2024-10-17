@@ -21,7 +21,7 @@ export default function Page() {
       {/* Background video */}
       <video
         ref={videoRef} // Attach the ref to the video element
-        src="./Gen3Promo.mp4"
+        src="./e.mp4"
         autoPlay
         loop
         muted // Start muted to prevent autoplay sound
