@@ -19,14 +19,16 @@ export default function Home() {
         </div>
       </div>
 
-      <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-        <h1 className="text-4xl font-bold text-center mb-4">
-          AI Video Generator
-        </h1>
-        <p className="text-lg text-center mb-8 max-w-xl">
-          Create stunning videos in minutes with our advanced AI video
-          generator. Just input your ideas, and let our AI do the magic!
-        </p>
+      <main className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
+        <div className="flex flex-row items-center text-5xl font-bold mt-16 mb-4">
+          <span className="mr-1">Build Your Short Video with</span>
+          <span className="text-primary"> Clip AI</span>
+        </div>
+        <div>
+          <p className="text-gray-500 text-xl mb-8 max-w-xl">
+            Effortlessly build AI-generated videos with ease.
+          </p>
+        </div>
 
         <div className="bg-white shadow-md rounded-lg p-6 max-w-2xl w-full">
           <h2 className="text-2xl font-semibold mb-4">
