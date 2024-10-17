@@ -1,18 +1,43 @@
+"use client"; // Ensure this is a client component
+
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "./dashboard/_components/Footer";
+import { useRef } from "react"; // Import useRef for video reference
 
 export default function Home() {
+  const videoRef = useRef(null); // Create a reference for the video element
+
+  const handleClick = () => {
+    if (videoRef.current) {
+      // Toggle mute on click
+      videoRef.current.muted = !videoRef.current.muted;
+    }
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="relative flex flex-col min-h-screen" onClick={handleClick}>
+      {/* Background video */}
+      <video
+        ref={videoRef} // Attach the ref to the video element
+        src="./e.mp4" // Path to your video
+        autoPlay
+        loop
+        muted // Start muted to prevent autoplay sound
+        className="absolute top-0 left-0 w-full h-full object-cover filter"
+      />
+
+      {/* Overlay for better visibility */}
+      <div className="absolute inset-0 bg-black opacity-50" />
+
       {/* Header */}
-      <div className="p-3 px-5 flex items-center justify-between shadow-md">
+      <div className="relative z-10 p-3 px-5 flex items-center justify-between bg-white bg-opacity-80 shadow-md">
         <Link href={"/"}>
           <div className="flex gap-3 items-center">
             <Image src={"/logo.png"} alt="logo" width={30} height={30} />
-            <h2 className="font-bold text-xl">Clip AI</h2>
+            <h2 className="font-bold text-xl text-gray-800">Clip AI</h2>
           </div>
         </Link>
         <div className="flex gap-3 items-center">
@@ -21,13 +46,13 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <main className="flex flex-col items-center flex-grow bg-gray-100 p-4">
-        <div className="flex flex-col items-center text-4xl md:text-5xl font-bold mt-16 mb-4 text-center">
+      <main className="flex flex-col items-center flex-grow p-4 relative z-10">
+        <div className="flex flex-col items-center text-4xl md:text-5xl font-bold mt-16 mb-4 text-center text-white">
           <span>Build Your Short Video with</span>
           <span className="text-primary"> Clip AI</span>
         </div>
         <div>
-          <p className="text-gray-500 text-lg md:text-xl mb-8 max-w-xl text-center">
+          <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-xl text-center">
             AI Video Creation Made Simple: Just Imagine, We’ll Do the Rest!
           </p>
         </div>
@@ -82,7 +107,10 @@ export default function Home() {
         </div>
       </main>
 
-      <Footer />
+      {/* Footer */}
+      <div className="relative z-10 bg-white bg-opacity-80 shadow-md">
+        <Footer />
+      </div>
     </div>
   );
 }
