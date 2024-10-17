@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import Footer from "./dashboard/_components/Footer";
 
 export default function Home() {
   return (
@@ -53,10 +53,13 @@ export default function Home() {
         </div>
 
         <div className="bg-white shadow-md rounded-lg p-6 max-w-2xl w-full">
-          <h2 className="text-2xl font-semibold mb-4">
-            How to Generate a Video
+          <h2 className="text-2xl font-semibold mb-4 text-center">
+            How it Works?
           </h2>
-          <ol className="list-decimal list-inside">
+          <p className="text-gray-500 mb-4 text-center">
+            Build your video in 4 simple steps:
+          </p>
+          <ul className="list-decimal list-inside">
             <li className="mb-2">
               <strong>Input Your Idea:</strong> Describe the concept of your
               video.
@@ -69,13 +72,14 @@ export default function Home() {
               <strong>Select Duration:</strong> Select the duration of the
               video.
             </li>
-            <li className="mb-2">
+            <li className="">
               <strong>Generate Video:</strong> Click the generate button and
               watch the magic happen!
             </li>
-          </ol>
+          </ul>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
