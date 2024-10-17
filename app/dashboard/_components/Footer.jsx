@@ -8,12 +8,14 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="py-4 px-6 flex justify-between items-center">
+    <div className="py-4 px-6 flex flex-col md:flex-row justify-between items-center">
       {/* Copyright Section */}
-      <div className="text-gray-400">© {new Date().getFullYear()} Clip AI</div>
+      <div className="text-gray-400 text-center md:text-left mb-2 md:mb-0">
+        © {new Date().getFullYear()} Clip AI
+      </div>
 
       {/* Made by Section with Contact and Social Media Icons */}
-      <div>
+      <div className="text-center mb-2 md:mb-0">
         <p className="text-gray-400">
           Made with ❤️ by{" "}
           <span className="font-bold hover:text-gray-500 transition">
@@ -25,7 +27,7 @@ function Footer() {
       </div>
 
       {/* Contact and Social Media Icons */}
-      <div className="flex gap-4">
+      <div className="flex gap-4 justify-center md:justify-end">
         <Link
           href="mailto:ashwiniparaye9309@gmail.com"
           className="text-gray-400 hover:text-gray-500 transition"
