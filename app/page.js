@@ -26,7 +26,7 @@ export default function Home() {
         </div>
         <div>
           <p className="text-gray-500 text-xl mb-8 max-w-xl">
-            Effortlessly build AI-generated videos with ease.
+            AI Video Creation Made Simple: Just Imagine, We’ll Do the Rest!
           </p>
         </div>
 
