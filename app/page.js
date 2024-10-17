@@ -47,7 +47,7 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="flex flex-col items-center flex-grow p-4 relative z-10">
-        <div className="flex flex-col items-center text-4xl md:text-5xl font-bold mt-16 mb-4 text-center text-white">
+        <div className="flex flex-col items-center text-4xl md:text-5xl font-bold mt-8 mb-4 text-center text-white">
           <span>Build Your Short Video with</span>
           <span className="text-primary"> Clip AI</span>
         </div>
@@ -57,6 +57,28 @@ export default function Home() {
           </p>
         </div>
 
+        {/* buttons */}
+        <div className="flex flex-col md:flex-row items-center mt-1 mb-6">
+          <Link href="/dashboard/create-new">
+            <Button
+              size="xl"
+              className="mt-4 mb-4 md:mb-0 md:mr-4 px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition"
+            >
+              Get Started
+            </Button>
+          </Link>
+
+          {/* Add demo video link */}
+          <Link href="#">
+            <Button
+              size="xl"
+              variant="outline"
+              className="mt-4 px-4 py-2 rounded-md transition"
+            >
+              Watch Demo
+            </Button>
+          </Link>
+        </div>
         <div className="bg-white shadow-md rounded-lg p-6 max-w-2xl w-full mt-10">
           <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center">
             How it Works?
@@ -82,28 +104,6 @@ export default function Home() {
               watch the magic happen!
             </li>
           </ul>
-        </div>
-
-        <div className="flex flex-col md:flex-row items-center mt-10">
-          <Link href="/dashboard/create-new">
-            <Button
-              size="xl"
-              className="mt-4 mb-4 md:mb-0 md:mr-4 px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition"
-            >
-              Get Started
-            </Button>
-          </Link>
-
-          {/* Add demo video link */}
-          <Link href="#">
-            <Button
-              size="xl"
-              variant="outline"
-              className="mt-4 px-4 py-2 rounded-md transition"
-            >
-              Watch Demo
-            </Button>
-          </Link>
         </div>
       </main>
 
