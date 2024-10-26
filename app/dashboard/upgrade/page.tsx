@@ -4,7 +4,7 @@ import React from "react";
 
 function Upgrade() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-5 scroll-none">
+    <div className="flex flex-col items-center justify-center p-5 overflow-auto">
       <h1 className="text-4xl font-bold text-primary mb-4">
         Upgrade Your Plan
       </h1>
@@ -13,7 +13,7 @@ function Upgrade() {
         Clip AI. Choose a plan that suits your creative needs!
       </p>
 
-      <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+      <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4 mt-6">
         {/* Basic Plan */}
         <div className="bg-white shadow-lg rounded-lg p-6 max-w-xs w-full">
           <h2 className="text-2xl font-semibold mb-4">Basic Plan</h2>
