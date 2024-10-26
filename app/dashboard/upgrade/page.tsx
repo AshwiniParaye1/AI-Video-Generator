@@ -13,50 +13,59 @@ function Upgrade() {
         Clip AI. Choose a plan that suits your creative needs!
       </p>
 
-      <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4 mt-6">
-        {/* Basic Plan */}
-        <div className="bg-white shadow-lg rounded-lg p-6 max-w-xs w-full">
-          <h2 className="text-2xl font-semibold mb-4">Basic Plan</h2>
-          <p className="text-xl font-bold mb-4">$9.99/month</p>
-          <ul className="list-disc list-inside text-gray-700 mb-4">
-            <li>Access to standard AI video templates</li>
-            <li>720p video exports</li>
-            <li>5GB storage for your projects</li>
-            <li>Email support</li>
-          </ul>
-          <Link href="#">
-            <Button className="w-full">Select Basic</Button>
-          </Link>
-        </div>
+      <div className="flex flex-col md:flex-row justify-center space-y-4  md:space-y-0 md:space-x-4 mt-6">
+        {/* Card Container with Flex Grow */}
+        <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row">
+          {/* Basic Plan */}
+          <div className="bg-white shadow-lg rounded-lg p-6 max-w-xs w-full flex flex-col justify-between h-full mr-8">
+            <div>
+              <h2 className="text-2xl font-semibold mb-4">Basic Plan</h2>
+              <p className="text-xl font-bold mb-4">$9.99/month</p>
+              <ul className="list-disc list-inside text-gray-700 mb-4">
+                <li>Access to standard AI video templates</li>
+                <li>720p video exports</li>
+                <li>5GB storage for your projects</li>
+                <li>Email support</li>
+              </ul>
+            </div>
+            <Link href="#">
+              <Button className="w-full">Select Basic</Button>
+            </Link>
+          </div>
 
-        {/* Pro Plan */}
-        <div className="bg-white shadow-lg rounded-lg p-6 max-w-xs w-full">
-          <h2 className="text-2xl font-semibold mb-4">Pro Plan</h2>
-          <p className="text-xl font-bold mb-4">$19.99/month</p>
-          <ul className="list-disc list-inside text-gray-700 mb-4">
-            <li>Access to premium AI video templates</li>
-            <li>1080p video exports</li>
-            <li>20GB storage for your projects</li>
-            <li>Priority email support</li>
-          </ul>
-          <Link href="#">
-            <Button className="w-full">Select Pro</Button>
-          </Link>
-        </div>
+          {/* Pro Plan */}
+          <div className="bg-white shadow-lg rounded-lg p-6 max-w-xs w-full flex flex-col justify-between h-full mr-8">
+            <div>
+              <h2 className="text-2xl font-semibold mb-4">Pro Plan</h2>
+              <p className="text-xl font-bold mb-4">$19.99/month</p>
+              <ul className="list-disc list-inside text-gray-700 mb-4">
+                <li>Access to premium AI video templates</li>
+                <li>1080p video exports</li>
+                <li>20GB storage for your projects</li>
+                <li>Priority email support</li>
+              </ul>
+            </div>
+            <Link href="#">
+              <Button className="w-full">Select Pro</Button>
+            </Link>
+          </div>
 
-        {/* Elite Plan */}
-        <div className="bg-white shadow-lg rounded-lg p-6 max-w-xs w-full">
-          <h2 className="text-2xl font-semibold mb-4">Elite Plan</h2>
-          <p className="text-xl font-bold mb-4">$29.99/month</p>
-          <ul className="list-disc list-inside text-gray-700 mb-4">
-            <li>Access to all AI video templates</li>
-            <li>4K video exports</li>
-            <li>50GB storage for your projects</li>
-            <li>Dedicated support</li>
-          </ul>
-          <Link href="#">
-            <Button className="w-full">Select Elite</Button>
-          </Link>
+          {/* Elite Plan */}
+          <div className="bg-white shadow-lg rounded-lg p-6 max-w-xs w-full flex flex-col justify-between h-full">
+            <div>
+              <h2 className="text-2xl font-semibold mb-4">Elite Plan</h2>
+              <p className="text-xl font-bold mb-4">$29.99/month</p>
+              <ul className="list-disc list-inside text-gray-700 mb-4">
+                <li>Access to all AI video templates</li>
+                <li>4K video exports</li>
+                <li>50GB storage for your projects</li>
+                <li>Dedicated support</li>
+              </ul>
+            </div>
+            <Link href="#">
+              <Button className="w-full">Select Elite</Button>
+            </Link>
+          </div>
         </div>
       </div>
 
