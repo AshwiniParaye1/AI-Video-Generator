@@ -22,7 +22,7 @@ export default function Home() {
       {/* Background video */}
       <video
         ref={videoRef} // Attach the ref to the video element
-        src="./Gen3Promo.mp4" // Path to your video
+        src="./bg-video.mp4" // Path to your video
         autoPlay
         loop
         muted // Start muted to prevent autoplay sound
