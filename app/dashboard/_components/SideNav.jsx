@@ -29,13 +29,13 @@ function SideNav() {
       name: "Upgrade",
       path: "/dashboard/upgrade",
       icon: ShieldPlus
-    },
-    {
-      id: 4,
-      name: "Account",
-      path: "/account",
-      icon: CircleUserRound
     }
+    // {
+    //   id: 4,
+    //   name: "Account",
+    //   path: "/account",
+    //   icon: CircleUserRound
+    // }
   ];
 
   const path = usePathname();
