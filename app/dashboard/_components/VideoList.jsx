@@ -13,11 +13,11 @@ function VideoList({ videoList }) {
   };
 
   return (
-    <div className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+    <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
       {videoList.map((video) => (
         <div
           key={video?.id}
-          className="cursor-pointer hover:scale-105 transition-all"
+          className="cursor-pointer hover:scale-105 transition-transform"
           onClick={() => {
             setOpenPlayerDialog(Date.now());
             setVideoId(video?.id);
@@ -34,7 +34,7 @@ function VideoList({ videoList }) {
               ...video,
               setDurationInFrames: () => {}
             }}
-            style={{ borderRadius: 10 }}
+            style={{ borderRadius: 10, width: "100%" }}
           />
         </div>
       ))}
