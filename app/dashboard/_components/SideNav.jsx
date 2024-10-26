@@ -27,7 +27,7 @@ function SideNav() {
     {
       id: 3,
       name: "Upgrade",
-      path: "/upgrade",
+      path: "/dashboard/upgrade",
       icon: ShieldPlus
     },
     {
