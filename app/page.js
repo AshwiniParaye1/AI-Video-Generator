@@ -83,11 +83,11 @@ export default function Home() {
             </Button>
           </Link>
         </div>
-        <div className="bg-white shadow-md rounded-lg p-6 max-w-2xl w-full mt-10">
+        <div className="bg-gray-500 bg-opacity-50 shadow-md rounded-lg p-6 max-w-2xl w-full mt-10 ">
           <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center">
             How it Works?
           </h2>
-          <p className="text-gray-500 mb-4 text-center">
+          <p className="text-gray-500 mb-4 text-center font-bold">
             Build your video in 4 simple steps:
           </p>
           <ul className="list-decimal list-inside text-sm md:text-base">
