@@ -14,7 +14,6 @@ import { VideoData } from "@/configs/schema";
 import { useUser } from "@clerk/nextjs";
 import { db } from "@/configs/db";
 import PlayerDialog from "../_components/PlayerDialog";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Users } from "@/configs/schema";
 import { eq } from "drizzle-orm";
@@ -26,7 +25,7 @@ function CreateNew() {
   const [audioFileUrl, setAudioFileUrl] = useState();
   const [captions, setCaptions] = useState();
   const [imageList, setImageList] = useState();
-  const [playVideo, setPlayVideo] = useState(true);
+  const [playVideo, setPlayVideo] = useState(false); // changed to false initially
   const [videoId, setVideoId] = useState(1);
 
   const { videoData, setVideoData } = useContext(VideoDataContext);
@@ -41,39 +40,45 @@ function CreateNew() {
   };
 
   const onCreateClickHandler = () => {
-    if (userDetails?.credits === 0) {
-      toast("Oops! You don't have enough credits to create a new video🙁");
+    if (!formData.topic || !formData.imageStyle || !formData.duration) {
+      toast.error("Please fill in all fields!"); // Validate input on mobile
       return;
     }
+
+    if (userDetails?.credits === 0) {
+      toast.error(
+        "Oops! You don't have enough credits to create a new video🙁"
+      );
+      return;
+    }
+
     GetVideoScript();
   };
 
   // Get video script
   const GetVideoScript = async () => {
     setLoading(true);
-    const prompt =
-      "Write a script to generate " +
-      formData.duration +
-      " video on topic : " +
-      formData.topic +
-      " along with Al image prompt in " +
-      formData.imageStyle +
-      " format for each scene and give me result in JSON format with imagePrompt and ContentText as field, No Plain text";
+    const prompt = `Write a script to generate ${formData.duration} video on topic: ${formData.topic} along with Al image prompt in ${formData.imageStyle} format for each scene and give me result in JSON format with imagePrompt and ContentText as field, no plain text`;
 
     try {
       const res = await axios.post("/api/get-video-script", { prompt });
       const scriptData = res.data.result;
+
+      if (!scriptData || scriptData.length === 0) {
+        throw new Error("Script generation failed");
+      }
 
       setVideoData((prev) => ({ ...prev, videoScript: scriptData }));
       setVideoScript(scriptData);
       await GenerateAudioFile(scriptData);
     } catch (error) {
       console.error("Error fetching video script:", error);
+      toast.error("Failed to generate video script, please try again!");
       setLoading(false);
     }
   };
 
-  // Generate audio file and save in firebase storage
+  // Generate audio file and save in Firebase storage
   const GenerateAudioFile = async (videoScriptData) => {
     setLoading(true);
     let script = "";
@@ -87,13 +92,17 @@ function CreateNew() {
       const res = await axios.post("/api/generate-audio", { text: script, id });
       const audioUrl = res.data.result;
 
+      if (!audioUrl) throw new Error("Audio generation failed");
+
       setVideoData((prev) => ({ ...prev, audioFileUrl: audioUrl }));
       setAudioFileUrl(audioUrl);
+
       if (audioUrl) {
         await GenerateAudioCaption(audioUrl, videoScriptData);
       }
     } catch (error) {
       console.error("Error generating audio:", error);
+      toast.error("Failed to generate audio file.");
       setLoading(false);
     }
   };
@@ -106,17 +115,16 @@ function CreateNew() {
       const res = await axios.post("/api/generate-caption", {
         audioFileUrl: fileUrl
       });
-      console.log("Caption API Response:", res.data);
+      const captionsData = res.data.result;
 
-      if (res.data && res.data.result) {
-        setVideoData((prev) => ({ ...prev, captions: res.data.result }));
-        setCaptions(res.data.result);
-        await GenerateImage(videoScriptData);
-      } else {
-        throw new Error("Caption generation failed");
-      }
+      if (!captionsData) throw new Error("Caption generation failed");
+
+      setVideoData((prev) => ({ ...prev, captions: captionsData }));
+      setCaptions(captionsData);
+      await GenerateImage(videoScriptData);
     } catch (error) {
       console.error("Error generating captions:", error);
+      toast.error("Failed to generate captions.");
       setLoading(false);
     }
   };
@@ -133,16 +141,22 @@ function CreateNew() {
         return res.data.result;
       } catch (error) {
         console.error("Error generating image:", error);
+        toast.error("Failed to generate image.");
         return null; // Handle error gracefully
       }
     });
 
     try {
       const images = await Promise.all(imagePromises);
-      setVideoData((prev) => ({ ...prev, imageList: images.filter(Boolean) }));
-      setImageList(images);
+      const filteredImages = images.filter(Boolean); // Remove null values
+      if (filteredImages.length === 0)
+        throw new Error("Image generation failed");
+
+      setVideoData((prev) => ({ ...prev, imageList: filteredImages }));
+      setImageList(filteredImages);
     } catch (error) {
       console.error("Error collecting image results:", error);
+      toast.error("Image generation failed.");
     } finally {
       setLoading(false);
     }
@@ -171,10 +185,11 @@ function CreateNew() {
 
       await UpdateUserCredits();
       setVideoId(result[0].id);
-      setPlayVideo(true);
-      console.log(result);
+      setPlayVideo(true); // Enable video play
+      toast.success("Video created successfully!");
     } catch (error) {
       console.error("Error saving video data:", error);
+      toast.error("Failed to save video data.");
     } finally {
       setLoading(false);
     }
@@ -192,9 +207,10 @@ function CreateNew() {
         credits: userDetails?.credits - 10
       }));
 
-      setVideoData(null);
+      setVideoData(null); // Reset videoData
     } catch (error) {
       console.error("Error updating user credits:", error);
+      toast.error("Failed to update user credits.");
     }
   };
 
