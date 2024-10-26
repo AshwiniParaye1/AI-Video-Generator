@@ -9,13 +9,13 @@ function Header() {
   const { userDetails } = useContext(UserDetailsContext);
 
   return (
-    <div className="p-3 px-5 flex items-center justify-between shadow-md flex-wrap">
+    <div className="fixed top-0 left-0 right-0 p-3 px-5 flex items-center justify-between shadow-md bg-white z-10 flex-wrap">
       <Link href={"/"} className="flex items-center gap-3">
         <Image src={"/logo.png"} alt="logo" width={30} height={30} />
         <h2 className="font-bold text-xl">Clip AI</h2>
       </Link>
       <div className="flex items-center gap-3 mt-2 md:mt-0">
-        <div className="flex gap-2 items-centerrounded-lg p-2">
+        <div className="flex gap-2 items-center rounded-lg p-2">
           <Image src={"/credits.png"} alt="credits" width={30} height={30} />
           <h2>{userDetails?.credits}</h2>
         </div>
