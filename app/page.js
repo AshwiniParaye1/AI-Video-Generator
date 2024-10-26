@@ -33,7 +33,7 @@ export default function Home() {
       <div className="absolute inset-0 bg-black opacity-50" />
 
       {/* Header */}
-      <div className="relative z-10 p-3 px-5 flex items-center justify-between bg-gray-800 bg-opacity-80 shadow-md">
+      <div className="relative z-10 p-3 px-5 flex items-center justify-between bg-gray-800 bg-opacity-80">
         {" "}
         {/* Updated header color */}
         <Link href={"/"}>
@@ -87,7 +87,7 @@ export default function Home() {
         </div>
 
         {/* Steps Section */}
-        <div className="bg-gray-500 bg-opacity-50 shadow-md rounded-lg p-6 max-w-2xl w-full mt-10 ">
+        <div className="bg-gray-800 bg-opacity-50 shadow-md rounded-lg p-6 max-w-2xl w-full mt-10 ">
           <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center text-white">
             {" "}
             {/* Changed text color to white */}
@@ -122,7 +122,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <div className="relative z-10 bg-gray-800 bg-opacity-80 shadow-md">
+      <div className="relative z-10 bg-gray-800 bg-opacity-80">
         {" "}
         {/* Updated footer color */}
         <Footer />
