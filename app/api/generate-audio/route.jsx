@@ -11,26 +11,32 @@ const client = new textToSpeech.TextToSpeechClient({
 });
 
 export async function POST(req) {
-  const { text, id } = await req.json();
+  try {
+    const { text, id } = await req.json();
 
-  const storageRef = ref(storage, `ai-short-video-files/+${id}.mp3`);
+    const storageRef = ref(storage, `ai-short-video-files/+${id}.mp3`);
 
-  const request = {
-    input: { text: text },
-    // Select the language and SSML voice gender (optional)
-    voice: { languageCode: "en-US", ssmlGender: "NEUTRAL" },
-    // select the type of audio encoding
-    audioConfig: { audioEncoding: "MP3" }
-  };
+    const request = {
+      input: { text: text },
+      voice: { languageCode: "en-US", ssmlGender: "NEUTRAL" },
+      audioConfig: { audioEncoding: "MP3" }
+    };
 
-  // Performs the text-to-speech request
-  const [response] = await client.synthesizeSpeech(request);
+    // Performs the text-to-speech request
+    const [response] = await client.synthesizeSpeech(request);
 
-  const audioBuffer = Buffer.from(response.audioContent, "binary");
+    const audioBuffer = Buffer.from(response.audioContent, "binary");
 
-  await uploadBytes(storageRef, audioBuffer, { contentType: "audio/mp3" });
+    await uploadBytes(storageRef, audioBuffer, { contentType: "audio/mp3" });
 
-  const downloadUrl = await getDownloadURL(storageRef);
+    const downloadUrl = await getDownloadURL(storageRef);
 
-  return NextResponse.json({ result: downloadUrl });
+    return NextResponse.json({ result: downloadUrl });
+  } catch (error) {
+    console.error("Error generating audio:", error);
+    return NextResponse.json(
+      { error: "Failed to generate audio." },
+      { status: 500 }
+    );
+  }
 }
