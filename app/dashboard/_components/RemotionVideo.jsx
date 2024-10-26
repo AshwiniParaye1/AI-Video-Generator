@@ -44,7 +44,7 @@ function RemotionVideo({
             interpolate(
               frame,
               [startTime, startTime + duration / 2, startTime + duration], //zoom in and out
-              index % 2 === 0 ? [1, 1.8, 1] : [1.8, 1, 1.8],
+              index % 2 === 0 ? [1, 1.5, 1] : [1.5, 1, 1.5],
               {
                 extrapolateLeft: "clamp",
                 extrapolateRight: "clamp"
