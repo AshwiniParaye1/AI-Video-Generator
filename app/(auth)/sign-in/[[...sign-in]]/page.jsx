@@ -25,7 +25,7 @@ export default function Page() {
         autoPlay
         loop
         muted // Start muted to prevent autoplay sound
-        className="absolute top-0 left-0 w-full h-full object-cover filter"
+        className="absolute top-0 left-0 w-full h-full object-cover filter blur-sm"
       />
 
       {/* Overlay for better visibility */}
@@ -33,12 +33,7 @@ export default function Page() {
 
       {/* Centered sign-in form */}
       <div className="flex justify-center items-center min-h-screen relative z-10 px-4">
-        <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-          <h1 className="text-2xl font-semibold text-center mb-4 text-gray-700">
-            Welcome Back
-          </h1>
-          <SignIn />
-        </div>
+        <SignIn />
       </div>
     </div>
   );
