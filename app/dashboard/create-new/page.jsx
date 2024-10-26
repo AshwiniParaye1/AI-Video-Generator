@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Ensure this is a client component
 
 import React, { useContext, useEffect, useState } from "react";
 import SelectTopic from "./_components/SelectTopic";
@@ -17,6 +17,7 @@ import PlayerDialog from "../_components/PlayerDialog";
 import { toast } from "sonner";
 import { Users } from "@/configs/schema";
 import { eq } from "drizzle-orm";
+import { useRouter } from "next/navigation"; // Import useRouter
 
 function CreateNew() {
   const [formData, setFormData] = useState([]);
@@ -25,8 +26,10 @@ function CreateNew() {
   const [audioFileUrl, setAudioFileUrl] = useState();
   const [captions, setCaptions] = useState();
   const [imageList, setImageList] = useState();
-  const [playVideo, setPlayVideo] = useState(false); // changed to false initially
+  const [playVideo, setPlayVideo] = useState(false);
   const [videoId, setVideoId] = useState(1);
+
+  const router = useRouter(); // Initialize useRouter
 
   const { videoData, setVideoData } = useContext(VideoDataContext);
   const { userDetails, setUserDetails } = useContext(UserDetailsContext);
