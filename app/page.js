@@ -26,18 +26,20 @@ export default function Home() {
         autoPlay
         loop
         muted // Start muted to prevent autoplay sound
-        className="absolute top-0 left-0 w-full h-full object-cover filter"
+        className="absolute top-0 left-0 w-full h-full object-cover filter blur-sm" // Add blur effect
       />
 
       {/* Overlay for better visibility */}
       <div className="absolute inset-0 bg-black opacity-50" />
 
       {/* Header */}
-      <div className="relative z-10 p-3 px-5 flex items-center justify-between bg-white bg-opacity-80 shadow-md">
+      <div className="relative z-10 p-3 px-5 flex items-center justify-between bg-gray-800 bg-opacity-80 shadow-md">
+        {" "}
+        {/* Updated header color */}
         <Link href={"/"}>
           <div className="flex gap-3 items-center">
             <Image src={"/logo.png"} alt="logo" width={30} height={30} />
-            <h2 className="font-bold text-xl text-gray-800">Clip AI</h2>
+            <h2 className="font-bold text-xl text-white">Clip AI</h2>
           </div>
         </Link>
         <div className="flex gap-3 items-center">
@@ -57,7 +59,7 @@ export default function Home() {
           </p>
         </div>
 
-        {/* buttons */}
+        {/* Buttons */}
         <div className="flex flex-col md:flex-row items-center mt-1 mb-6">
           <Link href="/dashboard/create-new">
             <Button
@@ -83,14 +85,22 @@ export default function Home() {
             </Button>
           </Link>
         </div>
+
+        {/* Steps Section */}
         <div className="bg-gray-500 bg-opacity-50 shadow-md rounded-lg p-6 max-w-2xl w-full mt-10 ">
-          <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center">
+          <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center text-white">
+            {" "}
+            {/* Changed text color to white */}
             How it Works?
           </h2>
-          <p className="text-gray-500 mb-4 text-center font-bold">
+          <p className="text-white mb-4 text-center font-bold">
+            {" "}
+            {/* Changed text color to white */}
             Build your video in 4 simple steps:
           </p>
-          <ul className="list-decimal list-inside text-sm md:text-base">
+          <ul className="list-decimal list-inside text-sm md:text-base text-white">
+            {" "}
+            {/* Changed text color to white */}
             <li className="mb-2">
               <strong>Input Your Idea:</strong> Describe the concept of your
               video.
@@ -112,7 +122,9 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <div className="relative z-10 bg-white bg-opacity-80 shadow-md">
+      <div className="relative z-10 bg-gray-800 bg-opacity-80 shadow-md">
+        {" "}
+        {/* Updated footer color */}
         <Footer />
       </div>
     </div>
